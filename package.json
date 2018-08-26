@@ -1,0 +1,26 @@
+{
+  "name": "tarot-json-api",
+  "version": "1.0.0",
+  "description": "An API to provide Tarot data in JSON format",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha tests.js"
+  },
+  "keywords": [
+    "tarot",
+    "json",
+    "api"
+  ],
+  "author": "Christopher Connolly",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mysql2": "^1.5.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.2",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "mocha": "^5.2.0"
+  }
+}

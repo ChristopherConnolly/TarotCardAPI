@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>A Front end for accessing a local API</title>
+
+    <!--Pull in Jquery from a CDN-->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" crossorigin="anonymous"></script>
+
+    <!--Pull in Bootstrap from a CDN-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" id="bootstrap-css">
+
+    <!--Pull in JQuery Datatables from CDN-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+    <!--Local CSS-->
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./scripts.js"></script>
+
+
+</head>
+
+<body>
+
+
+
+    <!--Tab region-->
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-10">
+                <!-- Nav tabs -->
+                <div class="tabs">
+                    <div class="tab-button-outer">
+                        <ul id="tab-button" class="nav nav-tabs" role="tablist">
+                            <li role="presentation">
+                                <a href="#datatable" aria-controls="data table" role="tab" data-toggle="tab">Datatable</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#crud" aria-controls="CRUD" role="tab" data-toggle="tab">CRUD</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" id="datatable" class="tab-contents fade-in" id="datatable">
+                        <table id="cardstable" class="cardstable" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Card ID</th>
+                                    <th>Card Name</th>
+                                    <th>Card Suit</th>
+                                    <th>Image URL</th>
+                                    <th>Card Summary</th>
+                                    <th>Card Description</th>
+                                    <th>Card Summary (Reversed)</th>
+                                    <th>Card Description (Reversed)</th>
+                                    <th>Card Notes</th>
+                                </tr>
+                            </thead>
+                        </table>
+
+
+
+                        <ul id="cards">
+
+                        </ul>
+
+                    </div>
+
+
+
+                    <div role="tabpanel" class="tab-contents fade-in" id="crud">
+
+                        <form id="cardForm" class="col-sm-8 form-group">
+                            <p>1. Select button below to perform a get request to get cards from server
+                                <br>
+                                <button id="cardBtnSearch" class="btn btn-info btn-lg">Perform Get Request to Populate List</button>
+                            </p>
+                            <p>
+                                2. Select the chosen card by Id below
+                                <br>
+                                <select name="cards" id="carddropdown" style="width:100px"></select>
+                            </p>
+                            <p> 3. Click button below to populate form with data corresponding to the Id chosen:
+                                <br>
+                                <button id="cardBtnPop" class="btn btn-info btn-lg">Perform Populate List</button>
+                                <br>
+                            </p>
+                            <div class="row">
+                                <div class="col-8">
+
+                                    <label class="col-form-label">Card ID Number:</label>
+                                    <input class="form-control" type="text" id="cardId" name="cardId">
+
+                                    <label class="col-form-label">Card Name:</label>
+                                    <input class="form-control" type="text" name="cardname" id="cardname">
+
+                                    <label class="col-form-label">Card Suit:</label>
+                                    <input class="form-control" type="text" name="cardsuit" id="cardsuit">
+
+                                    <label class="col-form-label">Image File:</label>
+                                    <input class="form-control" type="text" name="imagefile" id="imagefile">
+
+                                    <label class="col-form-label">Card Summary:</label>
+                                    <input class="form-control" type="text" id="cardsummary" name="cardsummary" />
+
+                                    <label class="col-form-label">Card Desctiption:</label>
+                                    <input class="form-control" type="text" id="carddescription" name="carddescription" />
+
+                                    <label class="col-form-label">Card Summary (Reversed):</label>
+                                    <input class="form-control" type="text" id="cardsummaryreversed" name="cardsummaryreversed" />
+
+                                    <label class="col-form-label">Card Description (Reversed)</label>
+                                    <input class="form-control" type="text" id="carddescriptionreversed" name="carddescriptionreversed" />
+
+                                    <label class="col-form-label">Card Notes:</label>
+                                    <input class="form-control" type="text" id="cardnotes" name="cardnotes" />
+
+                                    <button id="cardBtnPost" class="btn btn-info btn-lg form-control">Perform Post (New)</button>
+                                    </br>
+                                    <button id="cardBtnPut" class="btn btn-lg btn-success form-control">Perform Put (Edit)</button>
+                                    </br>
+                                    <button id="cardBtnDelete" class="btn btn-danger btn-lg form-control">Perform Delete</button>
+
+                        </form>
+                        </div>
+
+                        <div class="col-4">
+
+                            <img id="pic" height="318" width="181" />
+
+
+
+                        </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="requests.js"></script>
+
+</body>
+
+</html>
